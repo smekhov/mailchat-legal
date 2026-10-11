@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Че?: добавить контакт</title>
-<meta property="og:title" content="Давай переписываться в Че?">
+<title>MailGram: добавить контакт</title>
+<meta property="og:title" content="Давай переписываться в MailGram">
 <meta property="og:description" content="Мессенджер через обычную почту. Все зашифровано.">
 <style>
 body{font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
@@ -15,9 +15,9 @@ a.btn{display:block;padding:15px;border-radius:16px;text-decoration:none;font-we
 </style></head><body>
 <div class="card">
 <div style="font-size:52px">💬</div>
-<h1 id="t">Давай переписываться в Че?</h1>
+<h1 id="t">Давай переписываться в MailGram</h1>
 <p id="d">Мессенджер через обычную почту. Сообщения, фото и видео зашифрованы.</p>
-<a class="btn main" id="open" href="#">Открыть в Че?</a>
+<a class="btn main" id="open" href="#">Открыть в MailGram</a>
 <a class="btn alt" id="store" href="https://apps.apple.com/app/id6820939638">Скачать в App Store</a>
 </div>
 <script>
@@ -30,9 +30,9 @@ var name = q.get("name"), email = q.get("email");
 var en = !/^ru/i.test(navigator.language || "");
 if (en) {
   document.documentElement.lang = "en";
-  document.getElementById("t").textContent = "Let's chat in Che?";
+  document.getElementById("t").textContent = "Let's chat in MailGram";
   document.getElementById("d").textContent = "A messenger over regular email. Messages, photos and videos are encrypted.";
-  document.getElementById("open").textContent = "Open in Che?";
+  document.getElementById("open").textContent = "Open in MailGram";
   document.getElementById("store").textContent = "Get it on the App Store";
 }
 if (name || email) {
