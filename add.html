@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Че?: добавить контакт</title>
+<meta property="og:title" content="Давай переписываться в Че?">
+<meta property="og:description" content="Мессенджер через обычную почту. Все зашифровано.">
+<style>
+body{font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+background:linear-gradient(160deg,#c9d6ff 0%,#e2c9ff 45%,#c6f4e8 100%);color:#111}
+.card{max-width:380px;margin:24px 16px;padding:28px 22px;border-radius:28px;background:rgba(255,255,255,.65);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.08)}
+h1{font-size:24px;margin:8px 0}p{margin:8px 0 18px;color:#444}
+a.btn{display:block;padding:15px;border-radius:16px;text-decoration:none;font-weight:600;margin-top:10px}
+.main{background:#2f6fed;color:#fff}.alt{background:rgba(0,0,0,.06);color:#111}
+.who{font-weight:600;color:#111}
+@media(prefers-color-scheme:dark){body{background:linear-gradient(160deg,#1d2440,#2a1f3d 45%,#123029);color:#eee}.card{background:rgba(30,30,30,.6)}p{color:#bbb}.who{color:#fff}.alt{background:rgba(255,255,255,.1);color:#eee}}
+</style></head><body>
+<div class="card">
+<div style="font-size:52px">💬</div>
+<h1 id="t">Давай переписываться в Че?</h1>
+<p id="d">Мессенджер через обычную почту. Сообщения, фото и видео зашифрованы.</p>
+<a class="btn main" id="open" href="#">Открыть в Че?</a>
+<a class="btn alt" id="store" href="https://apps.apple.com/app/id6820939638">Скачать в App Store</a>
+</div>
+<script>
+// Параметры приглашения во фрагменте после #: на сервер они не уходят
+var f = location.hash.replace(/^#/, "");
+var q = new URLSearchParams(f);
+var deep = "mailchat://add?" + f;
+document.getElementById("open").href = deep;
+var name = q.get("name"), email = q.get("email");
+var en = !/^ru/i.test(navigator.language || "");
+if (en) {
+  document.documentElement.lang = "en";
+  document.getElementById("t").textContent = "Let's chat in Che?";
+  document.getElementById("d").textContent = "A messenger over regular email. Messages, photos and videos are encrypted.";
+  document.getElementById("open").textContent = "Open in Che?";
+  document.getElementById("store").textContent = "Get it on the App Store";
+}
+if (name || email) {
+  var who = document.createElement("p");
+  who.className = "who";
+  who.textContent = (name ? name + " · " : "") + (email || "");
+  document.getElementById("d").after(who);
+}
+// Сразу пробуем открыть приложение, если оно стоит
+if (f && /iPhone|iPad|iPod/.test(navigator.userAgent)) setTimeout(function(){ location.href = deep; }, 300);
+</script>
+</body></html>
